@@ -8,7 +8,10 @@ import numpy as np
 clean_anemia_df = pd.DataFrame()
 
 # File path to the data source
-file_path = 'DataSources/Clean_Data_Anemia.csv'
+#file_path = 'DataSources/Clean_Data_Anemia.csv'
+
+# File path to interpolated data source
+file_path = 'DataSources/Interpolated_Data_Anemia.csv'
 
 # Attempting to read in the file
 try:
@@ -39,7 +42,7 @@ unique_years = sorted(clean_anemia_df["TIME_PERIOD"].unique())
 fig, ax = plt.subplots(figsize=(12, 8))
 
 # Define colors for bars
-bar_colors = plt.cm.Reds(np.linspace(0.4, 0.8, len(unique_years)))
+bar_colors = plt.cm.Blues(np.linspace(0.4, 0.8, len(unique_years)))
 
 def update(frame):
     # Clear the axes --> This is how it repeats for each year
@@ -86,7 +89,7 @@ anim = animation.FuncAnimation(
     fig,
     update,
     frames=len(unique_years),
-    interval=500,
+    interval=15,
     repeat=True
 )
 
